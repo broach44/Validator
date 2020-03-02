@@ -85,12 +85,49 @@ namespace Validator
             // TODO: Email Valid;
             // one @ symbol; one dot after @; something before @; domain after the @; top level domain after dot
 
+            Console.WriteLine("Please enter your email");
+            var userEmailEntry = Console.ReadLine();
+            var validEmail = false;
+            string[] topLevelDomains = new string[] { "com", "edu", "org", "net" };
+
+            while (!validEmail)
+            {
+                if (userEmailEntry.IndexOf('@') != -1 && userEmailEntry.IndexOf('@') >= 1)
+                {
+                    var dotCount = 0;
+                    foreach (var item in userEmailEntry)
+                    {
+                        if (item == '.') dotCount++;
+                    }
+
+                    if (dotCount == 1 && userEmailEntry.IndexOf('.') > userEmailEntry.IndexOf('@') + 1)
+                    {
+                        var lastThreeChars = userEmailEntry.Substring(userEmailEntry.IndexOf('.') + 1);
+                        if (Array.IndexOf(topLevelDomains, lastThreeChars) != -1)
+                        {
+                            Console.WriteLine("Valid Email");
+                            validEmail = true;
+                        }
+                        else
+                        { 
+                             Console.WriteLine("Not a valid email, try again.");
+                             userEmailEntry = Console.ReadLine();
+                        }
+                    }
+                        
+                }
+            }
+
             // TODO: Check is name is valid Power Ranger
+            Console.WriteLine("Enter a valid Power Ranger Name");
+            var userRangerEntry = Console.ReadLine();
+
 
             // TODO: Is input a palindrome
+            Console.WriteLine("Enter a word you would like to check if it is a palindrome");
+            var userPalindromeEntry = Console.ReadLine();
 
-            // TODO: Spongebob mocking???
-
+            Console.WriteLine("You have completed the program.  Press enter to exit.");
             Console.ReadLine();
 
         }
