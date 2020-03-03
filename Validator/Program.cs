@@ -121,11 +121,41 @@ namespace Validator
             // TODO: Check is name is valid Power Ranger
             Console.WriteLine("Enter a valid Power Ranger Name");
             var userRangerEntry = Console.ReadLine();
+            string[] powerRangerNames = new string[] { "Jason", "Zack", "Trini", "Kimberly", "Billy" };
+            var rangerEntryIsValid = false;
+
+            while (!rangerEntryIsValid)
+            {
+                if (Array.IndexOf(powerRangerNames, userRangerEntry) != -1)
+                {
+                    Console.WriteLine("This Ranger is Valid!");
+                    rangerEntryIsValid = true;
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid Ranger, please try again.");
+                    userRangerEntry = Console.ReadLine();
+                }
+            }
 
 
             // TODO: Is input a palindrome
             Console.WriteLine("Enter a word you would like to check if it is a palindrome");
             var userPalindromeEntry = Console.ReadLine();
+            string[] splitWord = userPalindromeEntry.Split(' ');
+            var reversedWord = string.Join(" ", splitWord);
+            Console.WriteLine(userPalindromeEntry);
+            Console.WriteLine(reversedWord);
+
+
+            if (reversedWord == userPalindromeEntry)
+            {
+                Console.WriteLine("It is indeed a palindrome!");
+            }
+            else
+            {
+                Console.WriteLine("Not a palindrome");
+            }
 
             Console.WriteLine("You have completed the program.  Press enter to exit.");
             Console.ReadLine();
